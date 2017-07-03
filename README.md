@@ -1,4 +1,3 @@
-
 # Xamarin RSSReader
 
 Our client wants to be able to read news articles from a
@@ -40,6 +39,8 @@ Technology)
 (Reuters Technology)
 
 ## Screenshot
+### Droid
 ![Droid](https://github.com/erossini/XamarinRSSReader/blob/master/RSSReader_Droid.png)
 
+### UWP
 ![UWP](https://github.com/erossini/XamarinRSSReader/blob/master/RSSReader_UWP.PNG)
