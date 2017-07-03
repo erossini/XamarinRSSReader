@@ -1,3 +1,4 @@
+
 # Xamarin RSSReader
 
 Our client wants to be able to read news articles from a
@@ -37,3 +38,5 @@ Technology)
 (Reuters UK)
 - http://feeds.reuters.com/reuters/technologyNews?format=xml
 (Reuters Technology)
+
+![Droid](https://github.com/erossini/XamarinRSSReader/blob/master/RSSReader_Droid.png)
