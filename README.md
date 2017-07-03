@@ -39,4 +39,7 @@ Technology)
 - http://feeds.reuters.com/reuters/technologyNews?format=xml
 (Reuters Technology)
 
+## Screenshot
 ![Droid](https://github.com/erossini/XamarinRSSReader/blob/master/RSSReader_Droid.png)
+
+![UWP](https://github.com/erossini/XamarinRSSReader/blob/master/RSSReader_UWP.PNG)
