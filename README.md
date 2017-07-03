@@ -1,4 +1,4 @@
-# XamarinRSSReader
+# Xamarin RSSReader
 
 Our client wants to be able to read news articles from a
 provided feed that can be shown in an app. They are not too
