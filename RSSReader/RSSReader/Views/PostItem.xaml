@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RSSReader.Controls;assembly=RSSReader"
+             xmlns:enums="clr-namespace:RSSReader.Data.Enums;assembly=RSSReader.Data"
+             xmlns:psc="clr-namespace:PSC.Xamarin.Controls.BindablePicker;assembly=PSC.Xamarin.Controls.BindablePicker"
+             xmlns:psce="clr-namespace:PSC.Xamarin.Controls.EnumBindablePicker;assembly=PSC.Xamarin.Controls.EnumBindablePicker"
+             xmlns:pscd="clr-namespace:PSC.Xamarin.Controls.BindableDatePicker;assembly=PSC.Xamarin.Controls.BindableDatePicker"
+             x:Class="RSSReader.Views.PostItem" x:Name="PostItemPage" Title="Post">
+    <ContentPage.Content>
+        <ScrollView>
+            <ContentView x:Name="cvLoading" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" IsVisible="{Binding IsBusy, Mode=OneWay}" BackgroundColor="White" Padding="10, 0">
+                <ActivityIndicator WidthRequest="110" HeightRequest="70" IsRunning="True" IsVisible="True" Color="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            </ContentView>
+
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+                <StackLayout.Padding>
+                    <OnIdiom x:TypeArguments="Thickness">
+                        <OnIdiom.Phone>10,10,10,10</OnIdiom.Phone>
+                        <OnIdiom.Tablet>20,20,20,10</OnIdiom.Tablet>
+                    </OnIdiom>
+                </StackLayout.Padding>
+
+                <StackLayout IsVisible="{Binding ShowErrors}" HorizontalOptions="FillAndExpand">
+                    <Frame HasShadow ="false" OutlineColor="#E14063" Margin="0, 10">
+                        <Label Text ="{Binding ErrorDescription}" TextColor="#E14063" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" />
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="5" BackgroundColor="White">
+                    <Label Text="{Binding Title}" FontSize="Medium" FontAttributes="Bold" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Button x:Name="buttonFacebook" Clicked="buttonFacebook_Clicked" Text="Facebook" />
+                    <Button x:Name="buttonTwitter" Clicked="buttonTwitter_Clicked" Text="Twitter" />
+                    <Button x:Name="buttonEmail" Clicked="buttonEmail_Clicked" Text="Email" />
+                </StackLayout>
+                
+                <WebView x:Name="Browser" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Source="{Binding Link}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
