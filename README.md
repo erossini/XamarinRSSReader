@@ -40,10 +40,10 @@ Technology)
 
 ## Screenshot
 ### Droid
-![Droid](https://github.com/erossini/XamarinRSSReader/blob/master/RSSReader_Droid.png)
+![Droid](https://github.com/erossini/XamarinRSSReader/blob/master/Screenshots/RSSReader_Droid.png)
 
 ### UWP
-![UWP](https://github.com/erossini/XamarinRSSReader/blob/master/RSSReader_UWP.PNG)
+![UWP](https://github.com/erossini/XamarinRSSReader/blob/master/Screenshots/RSSReader_UWP.PNG)
 
 ### iOS
-![iOS](https://github.com/erossini/XamarinRSSReader/blob/master/RSSReader_iOS.png)
+![iOS](https://github.com/erossini/XamarinRSSReader/blob/master/Screenshots/RSSReader_iOS.png)
