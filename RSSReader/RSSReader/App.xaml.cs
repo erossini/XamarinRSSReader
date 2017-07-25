@@ -42,7 +42,7 @@ namespace RSSReader
             //                   typeof(Analytics), typeof(Crashes));
 
             // send first message to Azure
-			log.SendEvent("OnStart", "App", CrossVersionTracking.Current.CurrentVersion);
+            log.SendEvent("OnStart", "App", CrossVersionTracking.Current.CurrentVersion);
 
 			// check if the last session the app was in crash
 			//bool didAppCrash = Crashes.HasCrashedInLastSession;

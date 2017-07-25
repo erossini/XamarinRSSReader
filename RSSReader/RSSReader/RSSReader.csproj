@@ -57,11 +57,19 @@
     <Compile Include="Models\Messages\SorryMessage.cs" />
     <Compile Include="ViewModels\PostItemViewModel.cs" />
     <Compile Include="ViewModels\PostListViewModel.cs" />
+    <Compile Include="ViewModels\SourceItemViewModel.cs" />
+    <Compile Include="ViewModels\SourceListViewModel.cs" />
     <Compile Include="Views\PostItem.xaml.cs">
       <DependentUpon>PostItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PostList.xaml.cs">
       <DependentUpon>PostList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SourceItem.xaml.cs">
+      <DependentUpon>SourceItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SourceList.xaml.cs">
+      <DependentUpon>SourceList.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -156,13 +164,24 @@
       <Name>RSSReader.Repository</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SourceList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\PostItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PostList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SourceItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

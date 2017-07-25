@@ -57,7 +57,10 @@ namespace RSSReader.Extensions
 
                 // Remove the elements from the original collection, using the Count method to iterate through the list, 
                 // incrementing the count whenever there's a successful removal
-                return toRemove.Count(observableCollection.Remove);
+                if (toRemove.Count > 0 && observableCollection.Count > 0)
+                    return toRemove.Count(observableCollection.Remove);
+                else
+                    return -1;
             }
             else
                 return -1;

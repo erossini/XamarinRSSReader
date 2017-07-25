@@ -21,7 +21,6 @@ namespace RSSReader
                 BarTextColor = Color.White,
                 BarBackgroundColor = Color.FromHex("#FF6600")
             };
-
         }
 
         void NavigateTo(MenuItems menu)
@@ -37,7 +36,6 @@ namespace RSSReader
             };
 
             menuPage.Menu.SelectedItem = null;
-            menuPage.MenuUtilities.SelectedItem = null;
             IsPresented = false;
         }
     }

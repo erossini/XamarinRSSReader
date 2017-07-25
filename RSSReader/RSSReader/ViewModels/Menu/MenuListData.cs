@@ -15,6 +15,13 @@ namespace RSSReader
 				IconSource = UIHelpers.SetOSImagePath("home.png"),
 				TargetType = typeof(PostList)
 			});
+
+            this.Add(new MenuItems()
+            {
+                Title = "Sources",
+                IconSource = UIHelpers.SetOSImagePath("RSSMenuIcon.png"),
+                TargetType = typeof(SourceList)
+            });
         }
-	}
+    }
 }

@@ -98,8 +98,12 @@ namespace RSSReader.ViewModels
 
             if (!showSaveForLater)
             {
+                List<Source> sources = repo.GetSource();
+
                 RSSClient client = new RSSClient();
-                list = await client.CallUrlAsync("http://feeds.bbci.co.uk/news/uk/rss.xml");
+                foreach (Source source in sources)
+                    if (!string.IsNullOrEmpty(source.SourceUrl))
+                        list.AddRange(await client.CallUrlAsync(source.SourceUrl));
             }
             else
             {

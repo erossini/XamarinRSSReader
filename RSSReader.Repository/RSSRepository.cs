@@ -85,5 +85,56 @@ namespace RSSReader.Repository
             return db.GetItems<Post>(func);
         }
         #endregion
+        #region Source
+        /// <summary>
+        /// Gets the source
+        /// </summary>
+        /// <returns></returns>
+        public List<Source> GetSource()
+        {
+            return db.GetItems<Source>();
+        }
+
+        /// <summary>
+        /// Gets the source
+        /// </summary>)
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        public Source GetSource(int id)
+        {
+            return db.GetItem<Source>(id);
+        }
+
+        /// <summary>
+        /// Saves the source
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns></returns>
+        public int SaveSource(Source item)
+        {
+            db.SaveItem<Source>(item);
+            return item.Id;
+        }
+
+        /// <summary>
+        /// Deletes the source
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        public int DeleteSource(int id)
+        {
+            return db.DeleteItem<Source>(id);
+        }
+
+        /// <summary>
+        /// Gets list of source by function.
+        /// </summary>
+        /// <param name="func">Function</param>
+        /// <returns>The list of source.</returns>
+        public List<Source> GetSource(Expression<Func<Source, bool>> func)
+        {
+            return db.GetItems<Source>(func);
+        }
+        #endregion
     }
 }

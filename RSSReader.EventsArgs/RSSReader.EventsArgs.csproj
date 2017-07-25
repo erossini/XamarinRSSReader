@@ -35,6 +35,7 @@
     <Compile Include="PostEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveEventArgsEventArgs.cs" />
+    <Compile Include="SourceEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RSSReader.Data\RSSReader.Data.csproj">

@@ -5,7 +5,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace RSSReader.Web.Code
@@ -27,33 +29,43 @@ namespace RSSReader.Web.Code
                 using (var webClient = new HttpClient())
                 {
                     xmlUrl = new Uri(item.Url);
-                    HttpResponseMessage response = await webClient.GetAsync(xmlUrl);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var result = await response.Content.ReadAsStringAsync();
-                        XDocument document = XDocument.Parse(result);
 
-                        try
+                    try
+                    {
+                        HttpResponseMessage response = await webClient.GetAsync(xmlUrl);
+                        if (response.IsSuccessStatusCode)
                         {
-                            var temp = ((from u in document.Descendants("item")
-                                         select new Post()
-                                         {
-                                             Id = i++,
-                                             Category = u.Element("category")?.Value,
-                                             NewsSource = item.NewsSource,
-                                             Header = item.Header,
-                                             Title = u.Element("title")?.Value,
-                                             Description = u.Element("description")?.Value,
-                                             Link = new Uri(u.Element("link").Value).ToString(),
-                                             ImageUrl = GetImageUrl(u),
-                                             PubDate = DateTime.Parse(u.Element("pubDate").Value)
-                                         }).ToList());
-                            newslist.AddRange(temp);
+                            var result = await response.Content.ReadAsStringAsync();
+                            XDocument document = XDocument.Parse(result);
+
+                            try
+                            {
+                                var tmp = from u in document.Descendants("item") select u;
+                                foreach(var itm in tmp)
+                                {
+                                    if (itm != null)
+                                    {
+                                        Post post = new Post();
+                                        post.Category = itm.Element("category")?.Value;
+                                        post.NewsSource = string.IsNullOrEmpty(item.NewsSource) ? "" : item.NewsSource;
+                                        post.Title = itm.Element("title")?.Value;
+                                        post.Description = ReduceString(itm.Element("description")?.Value);
+                                        post.Link = itm.Element("link")?.Value;
+                                        post.ImageUrl = GetImageUrl(itm);
+                                        post.PubDate = DateTime.Parse(itm.Element("pubDate").Value);
+                                        newslist.Add(post);
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                log.SendEvent("RssParser error", "", "", exception: ex);
+                            }
                         }
-                        catch(Exception ex)
-                        {
-                            log.SendEvent("RssParser error", "", "", exception: ex);
-                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        log.SendEvent("RssParser error", "", "", exception: ex);
                     }
                 }
             }
@@ -84,6 +96,19 @@ namespace RSSReader.Web.Code
             }
 
             return rtn;
+        }
+
+        public string ReduceString(string content)
+        {
+            content = StripHTML(content);
+            if (content.Length > 200)
+                content = content.Substring(0, 200).Trim() + "...";
+            return content;
+        }
+
+        public static string StripHTML(string input)
+        {
+            return Regex.Replace(input, "<.*?>", String.Empty);
         }
     }
 }

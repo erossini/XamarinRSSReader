@@ -38,6 +38,7 @@ namespace RSSReader.Repository
             if (database != null)
             {
                 database.CreateTable<Post>();
+                database.CreateTable<Source>();
             }
         }
 
